@@ -43,6 +43,6 @@ def preprocess_dataset(input_path, output_path):
 
 if __name__ == '__main__':
     preprocess_dataset(
-        input_path='../bestSelling_games_raw/bestSelling_games.csv',
-        output_path='bestSelling_games_preprocessing/bestSelling_games_clean.csv'
+        input_path='bestSelling_games_raw/bestSelling_games',
+        output_path='preprocessing/bestSelling_games_preprocessing/'
     )
