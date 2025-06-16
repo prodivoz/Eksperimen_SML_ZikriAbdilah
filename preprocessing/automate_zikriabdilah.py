@@ -43,5 +43,5 @@ def preprocess_and_save_dataset(input_file, output_file):
 if __name__ == '__main__':
     preprocess_and_save_dataset(
         input_file='bestSelling_games_raw/bestSelling_games.csv',
-        output_file='preprocessing_result/games_preprocessed.csv'
+        output_file='preprocessing/games_preprocessed.csv'
     )
