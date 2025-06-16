@@ -20,7 +20,7 @@ def preprocess_dataset(input_path, output_path):
     df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
 
     # Drop kolom tidak penting
-    df_clean = df.drop(columns=['user_defined_tags', 'other_features', 'supported_language'])
+    df_clean = df.drop(columns=['user_defined_tags', 'other_features', 'supported_languages'])
 
     # Isi missing values
     for col in ['rating', 'release_date']:
