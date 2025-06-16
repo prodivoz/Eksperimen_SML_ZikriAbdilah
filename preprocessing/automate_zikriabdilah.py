@@ -36,13 +36,12 @@ def preprocess_dataset(input_path, output_path):
     for col in label_cols:
         df_clean[col] = le.fit_transform(df_clean[col])
 
-    # Simpan hasil
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    df_clean.to_csv(output_path, index=False)
-    print(f"✅ Preprocessed dataset saved to {output_path}")
-
 if __name__ == '__main__':
     preprocess_dataset(
         input_path='bestSelling_games_raw/bestSelling_games',
         output_path='preprocessing/bestSelling_games_preprocessing/'
-    )
+    )   
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    df_clean.to_csv(output_path, index=False)
+    print(f"✅ Preprocessed dataset saved to {output_path}")
+    
