@@ -42,6 +42,7 @@ def preprocess_and_save_dataset(input_file, output_file):
 # Blok utama yang akan dijalankan
 if __name__ == '__main__':
     preprocess_and_save_dataset(
-        input_file='bestSelling_games_raw/bestSelling_games.csv',
-        output_file='preprocessing/games_preprocessed.csv'
-    )
+    input_file='bestSelling_games_raw/bestSelling_games.csv',
+    output_file='preprocessing/bestSelling_games_preprocessing/games_preprocessed.csv'
+)
+
