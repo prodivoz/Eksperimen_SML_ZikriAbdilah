@@ -8,7 +8,7 @@ def preprocess_and_save_dataset(input_file, output_file):
     dan menyimpan hasilnya ke file baru.
     """
     print(f"Membaca data dari: {input_file}")
-    df = pd.read_csv('bestSelling_games_raw/bestSelling_games.csv')  
+    df = pd.read_csv(bestSelling_games_raw/bestSelling_games.csv)
 
     # Ubah tipe data tanggal
     df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
@@ -30,13 +30,7 @@ def preprocess_and_save_dataset(input_file, output_file):
     for col in label_cols:
         df_clean[col] = le.fit_transform(df_clean[col])
 
-    
-
-# Blok utama yang akan dijalankan
-if __name__ == '__main__':
-    preprocess_and_save_dataset(
-        input_file='bestSelling_games_raw/bestSelling_games.csv',
-        output_file='preprocessing_result/games_preprocessed.csv')
+    # === BAGIAN PENTING: Logika penyimpanan file ada DI DALAM FUNGSI ===
     output_dir = os.path.dirname(output_file)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -44,4 +38,10 @@ if __name__ == '__main__':
 
     df_clean.to_csv(output_file, index=False)
     print(f"✅ Dataset berhasil diproses dan disimpan di: {output_file}")
-    
+
+# Blok utama yang akan dijalankan
+if __name__ == '__main__':
+    preprocess_and_save_dataset(
+        input_file='bestSelling_games_raw/bestSelling_games.csv',
+        output_file='preprocessing_result/games_preprocessed.csv'
+    )
