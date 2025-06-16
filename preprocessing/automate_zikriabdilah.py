@@ -8,7 +8,7 @@ def preprocess_and_save_dataset(input_file, output_file):
     dan menyimpan hasilnya ke file baru.
     """
     print(f"Membaca data dari: {input_file}")
-    df = pd.read_csv("bestSelling_games.csv")
+    df = pd.read_csv('bestSelling_games_raw/bestSelling_games.csc')  
 
     # Ubah tipe data tanggal
     df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
@@ -30,24 +30,18 @@ def preprocess_and_save_dataset(input_file, output_file):
     for col in label_cols:
         df_clean[col] = le.fit_transform(df_clean[col])
 
-    # === BAGIAN PENTING: Logika penyimpanan file ada DI DALAM FUNGSI ===
-    # 1. Dapatkan nama direktori dari path output
-    output_dir = os.path.dirname(output_file)
+    
 
-    # 2. Buat direktori tersebut jika belum ada
+# Blok utama yang akan dijalankan
+if __name__ == '__main__':
+    preprocess_and_save_dataset(
+        input_file='bestSelling_games_raw/bestSelling_games.csv',
+        output_file='preprocessing_result/games_preprocessed.csv')
+    output_dir = os.path.dirname(output_file)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
         print(f"Direktori dibuat: {output_dir}")
 
-    # 3. Simpan DataFrame yang sudah bersih ke file CSV
     df_clean.to_csv(output_file, index=False)
     print(f"✅ Dataset berhasil diproses dan disimpan di: {output_file}")
-
-
-# Blok utama yang akan dijalankan
-if __name__ == '__main__':
-    # Cukup panggil satu fungsi utama dengan path input dan output yang jelas
-    preprocess_and_save_dataset(
-        input_file='bestSelling_games_raw/bestSelling_games.csv',
-        output_file='preprocessing_result/games_preprocessed.csv'
-    )
+    
