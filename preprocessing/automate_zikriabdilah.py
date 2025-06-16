@@ -1,5 +1,3 @@
-# preprocessing/automate_zikriabdilah.py (Versi Final yang Benar)
-
 import pandas as pd
 import os
 from sklearn.preprocessing import LabelEncoder
@@ -10,7 +8,7 @@ def preprocess_and_save_dataset(input_file, output_file):
     dan menyimpan hasilnya ke file baru.
     """
     print(f"Membaca data dari: {input_file}")
-    df = pd.read_csv(input_file)
+    df = pd.read_csv("bestSelling_games.csv")
 
     # Ubah tipe data tanggal
     df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
